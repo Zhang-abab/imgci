@@ -1,10 +1,6 @@
-name: Bulid Images
-
-on:
-  push:
-    branches: ["build"]
-  pull_request:
-    branches: ["build"]
+name: GitHub Actions Docker Image CI
+run-name: ${{ github.actor }} is Image out GitHub Actions 🚀
+on: [push]
 
 env:
   Version: "1.0.0"
