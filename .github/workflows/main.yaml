@@ -1,0 +1,36 @@
+name: Bulid Images
+
+on:
+  push:
+    branches: ["build"]
+  pull_request:
+    branches: ["build"]
+
+env:
+  Version: "1.0.0"
+  ImageName1: "esp_build"
+
+jobs:
+  BulidImage:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up QEMU
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOKCER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Django Build and push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ secrets.DOKCER_USERNAME }}/${{ env.ImageName1 }}:${{ env.Version }}
