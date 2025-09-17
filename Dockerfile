@@ -15,10 +15,6 @@ RUN cargo install espup --locked
 
 RUN cargo install espflash
 
-RUN espup install
-
-RUN . $HOME/export-esp.sh
-
 RUN git clone -b v5.2.5 --recursive https://github.com/espressif/esp-idf.git /home/esp-idf
 
 RUN python3 /home/esp-idf/tools/idf_tools.py install
@@ -28,3 +24,5 @@ RUN python3 /home/esp-idf/tools/idf_tools.py install-python-env
 ENV IDF_PATH=/home/esp-idf
 
 RUN /home/esp-idf/install.sh
+
+RUN espup install
