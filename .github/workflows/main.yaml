@@ -7,8 +7,8 @@ env:
   ImageName1: "esp_build"
 
 jobs:
-  BulidImage:
-    runs-on: ubuntu-latest
+  Explore-GitHub-Actions::
+    runs-on: self-hosted
 
     steps:
       - name: Set up QEMU
