@@ -7,9 +7,8 @@ env:
   ImageName1: "esp_build"
 
 jobs:
-  Explore-GitHub-Actions::
+  BuildImage:
     runs-on: self-hosted
-
     steps:
       - name: Set up QEMU
         uses: actions/checkout@v3
